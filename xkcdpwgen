@@ -1,0 +1,54 @@
+#!/usr/bin/env python3
+import argparse
+import random
+
+parser = argparse.ArgumentParser(\
+description='Generate a secure, memorable password using the XKCD method',\
+epilog="https://www.xkcd.com/936/")
+parser.add_argument('-w', '--words', type=int, default=4,
+help='include WORDS words in the password (default=4)')
+parser.add_argument('-c', '--caps', type=int, default=0,
+help='capitalize the first letter of CAPS random words (default=0)')
+parser.add_argument('-n', '--numbers', type=int, default=0,
+help='capitalize the first letter of CAPS random words (default=0)')
+parser.add_argument('-s', '--symbols', type=int, default=0,
+help='capitalize the first letter of CAPS random words (default=0)')
+
+args = parser.parse_args()
+# args.words, args.caps, args.numbers, args.symbols
+
+# returns random words from file thewords.txt
+def randWord():
+    lines = open('corncob_lowercase.txt').read().splitlines()
+    return random.choice(lines)
+
+# given a string inserts provided length 1 string insert at a random location
+def insertRandom(str, insert):
+    randIndex = random.randint(0, len(str))
+    return str[0:randIndex] + insert + str[randIndex:]
+
+words = []
+for i in range(0, args.words):
+    if (args.caps > 0):
+        words.append(randWord().capitalize())
+        args.caps = args.caps - 1
+    else:
+        words.append(randWord())
+
+password = ""
+for i in range(0, args.words):
+    w = random.choice(words)
+    words.remove(w)
+    password += w
+
+while args.symbols > 0:
+    s = random.choice(["~","!","@","#","$","%","^","&","*",".",":",";"])
+    password = insertRandom(password, s)
+    args.symbols = args.symbols - 1
+
+while args.numbers > 0:
+    d = random.choice(["0","1","2","3","4","5","6","7","8","9"])
+    password = insertRandom(password, d)
+    args.numbers = args.numbers - 1
+
+print(password)
