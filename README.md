@@ -1,7 +1,6 @@
 # xkcdpwgen
 
-Generates more memorable passwords based on [xkcd.com/936](https://xkcd.com/936).
-
+Generates more memorable passwords.
 
 
 ### Usage
