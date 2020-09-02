@@ -17,7 +17,7 @@ help='capitalize the first letter of CAPS random words (default=0)')
 args = parser.parse_args()
 # args.words, args.caps, args.numbers, args.symbols
 
-# returns random words from file thewords.txt
+# returns a random word from wordlist file
 def randWord():
     lines = open('corncob_lowercase.txt').read().splitlines()
     return random.choice(lines)
