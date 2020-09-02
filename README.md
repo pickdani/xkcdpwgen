@@ -15,14 +15,11 @@ optional arguments:
   -h, --help            show this help message and exit
   -w WORDS, --words WORDS
                         include WORDS words in the password (default=4)
-  -c CAPS, --caps CAPS  capitalize the first letter of CAPS random words
-                        (default=0)
+  -c CAPS, --caps CAPS  capitalize the first letter of CAPS random words (default=0)
   -n NUMBERS, --numbers NUMBERS
-                        capitalize the first letter of CAPS random words
-                        (default=0)
+                        insert NUMBERS random numbers in the password (default=0)
   -s SYMBOLS, --symbols SYMBOLS
-                        capitalize the first letter of CAPS random words
-                        (default=0)
+                        insert SYMBOLS random symbols in the password (default=0)
 
 https://www.xkcd.com/936/
 ```
